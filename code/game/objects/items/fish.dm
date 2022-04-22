@@ -65,16 +65,6 @@
 	desc = "When you're down by the sea and an eel bites your knee, that's a moray."
 	icon_state = "electric_eel"
 	secondary_drop = /obj/item/fishyegg/eel
-	var/delay_shock = 0
-
-/obj/item/fishy/eel/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if(delay_shock > world.time)
-		return
-	delay_shock = world.time + 1 MINUTES
-	if(istype(target, /mob/living))
-		var/mob/living/livingTarget = target
-		livingTarget.electrocute_act(35, src, 1, flags = SHOCK_NOGLOVES|SHOCK_ILLUSION)
 
 /obj/item/fishy/lobster
 	name = "lobster"
